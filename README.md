@@ -2,7 +2,7 @@
 
 Vitalis is a personal health AI agent. It runs continuously in the background, monitors your sleep and nutrition, notices patterns, and acts on them — without being asked.
 
-It is built across two systems. The [Vitalis Android app](https://github.com/leekycauldron/vitalis) runs on your phone and streams from Ray-Ban Meta glasses, passively logging everything you eat or drink just by looking at it. This agent — the AI layer — reads that data, combines it with your Oura Ring metrics, and reasons across both to give you genuinely useful, personalised health guidance through Telegram.
+It is built across two systems. The [Vitalis Android app](https://github.com/leekycauldron/vitalis) runs on your phone and streams from Ray-Ban Meta glasses, passively logging everything you eat or drink just by looking at it. This agent, the AI layer, reads that data, combines it with your Oura Ring metrics, and reasons across both to give you genuinely useful, personalised health guidance through Telegram.
 
 ---
 
@@ -10,7 +10,7 @@ It is built across two systems. The [Vitalis Android app](https://github.com/lee
 
 Most health apps require you to do the work. You log your meals manually, you open the app to check your stats, you remember to act on what you see. Nobody actually does this consistently.
 
-Vitalis removes that friction entirely. The glasses see what you eat and log it automatically. The agent reads that log, pulls your sleep and recovery data from your Oura Ring, and puts everything together into a single reasoning layer that knows your body — your goals, your patterns, your deficiencies — and talks to you like a person who has been paying attention.
+Vitalis removes that friction entirely. The glasses see what you eat and log it automatically. The agent reads that log, pulls your sleep and recovery data from your Oura Ring, and puts everything together into a single reasoning layer that knows your body, your goals, your patterns, your deficiencies, and talks to you like a person who has been paying attention.
 
 The app is the eyes. The agent is the brain.
 
@@ -18,7 +18,7 @@ The app is the eyes. The agent is the brain.
 
 ## How It Works
 
-When you look at food while wearing your Ray-Ban Meta glasses, the Vitalis app detects it through the camera, classifies it, and logs the meal — calories, macros, and whether it fits your dietary goals — silently in the background. No tapping, no searching, no manual entry.
+When you look at food while wearing your Ray-Ban Meta glasses, the Vitalis app detects it through the camera, classifies it, and logs the meal; calories, macros, and whether it fits your dietary goals, silently in the background. No tapping, no searching, no manual entry.
 
 That food log is exposed via API. This agent reads it continuously, combines it with your Oura Ring data, and reasons across both. If you have been consistently low on iron for four days, it tells you. If your readiness score dropped because you slept poorly after eating late, it connects those dots. If the pattern looks serious enough to warrant a doctor, it offers to call and book one — and when you say yes, it picks up the phone.
 
@@ -53,7 +53,7 @@ This is the distinction between a tool and an agent. A tool responds when you us
 
 ## Agent Identity
 
-Vitalis speaks like a knowledgeable friend — warm, direct, and practical. It does not pad responses with disclaimers or filler. It does not give generic advice. Every message references your actual data.
+Vitalis speaks like a knowledgeable friend, warm, direct, and practical. It does not pad responses with disclaimers or filler. It does not give generic advice. Every message references your actual data.
 
 Full personality, operating style, autonomous behaviours, and boundaries are defined in `IDENTITY.md` in this repo.
 
