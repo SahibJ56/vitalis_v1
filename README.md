@@ -79,6 +79,73 @@ Core principles:
 
 ---
 
+## Architecture
+
+graph TD
+    %% Color definitions
+    classDef teal fill:#26A69A,stroke:#004D40,stroke-width:2px,color:#fff;
+    classDef purple fill:#7E57C2,stroke:#311B92,stroke-width:2px,color:#fff;
+    classDef gray fill:#757575,stroke:#212121,stroke-width:2px,color:#fff;
+    classDef coral fill:#FF7043,stroke:#BF360C,stroke-width:2px,color:#fff;
+
+    %% Top Layer
+    RBM["Ray-Ban Meta glasses<br>(live camera stream)"]:::teal --> APP["Vitalis Android app<br>(passive food logging, menu scanner, restaurant finder)"]:::teal
+
+    %% App Sub-components
+    APP --> FD["Food detector<br>(Claude Haiku, logs macros silently)"]:::gray
+    APP --> MS["Menu scanner<br>(OCR + Claude Sonnet)"]:::gray
+    APP --> RF["Restaurant finder<br>(Google Places, sorted by travel time)"]:::gray
+
+    %% Agent Layer Input
+    OURA["Oura Ring API"] -.-> AGENT
+    
+    FD --> AGENT["Vitalis agent<br>(OpenClaw, persistent, always watching)"]:::purple
+    MS --> AGENT
+    RF --> AGENT
+
+    %% Agent Tools Subgraph
+    subgraph AGENT_TOOLS ["Agent tools"]
+        direction TB
+        FO["fetch_oura()<br>(sleep, HRV, readiness, SpO2, pulled every morning)"]:::gray
+        FMH["fetch_meal_history()<br>(reads food log from app API by day range)"]:::gray
+        BA["book_appointment()<br>(asks user first, then calls ElevenLabs)"]:::gray
+    end
+    style AGENT_TOOLS fill:#5E35B1,stroke:#311B92,stroke-width:2px,color:#fff;
+
+    AGENT --> FO
+    AGENT --> FMH
+    AGENT --> BA
+
+    %% External Call
+    BA -->|voice call to doctor or restaurant| EL["ElevenLabs"]:::coral
+
+    %% Output Layer
+    FO --> TG["Telegram<br>(everything reaches the user here)"]:::teal
+    FMH --> TG
+    BA --> TG
+
+    %% Telegram Sub-components
+    TG --> MD["Morning debrief<br>(sent autonomously every day, sleep + nutrition + action)"]:::gray
+    TG --> HA["Health alerts<br>(deficiency, low readiness, junk food pattern)"]:::gray
+    TG --> AB["Appointment booked<br>(confirmed, added to Google Calendar)"]:::gray
+
+    %% Final User Node
+    MD --> YOU["You<br>(no app to open, just a message)"]:::teal
+    HA --> YOU
+    AB --> YOU
+
+    %% Legend
+    subgraph Legend ["Legend"]
+        direction LR
+        L1["User-facing"]:::teal
+        L2["Agent layer"]:::purple
+        L3["External voice service"]:::coral
+        L4["Components"]:::gray
+    end
+    style Legend fill:none,stroke:#757575,stroke-width:2px,stroke-dasharray: 5 5;
+
+---
+
 ## Tech Stack
 
 | Component | Technology |
