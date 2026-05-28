@@ -81,6 +81,7 @@ Core principles:
 
 ## Architecture
 
+```mermaid
 graph TD
     %% Color definitions
     classDef teal fill:#26A69A,stroke:#004D40,stroke-width:2px,color:#fff;
@@ -143,7 +144,7 @@ graph TD
         L4["Components"]:::gray
     end
     style Legend fill:none,stroke:#757575,stroke-width:2px,stroke-dasharray: 5 5;
-
+```
 ---
 
 ## Tech Stack
