@@ -1,6 +1,6 @@
 # Vitalis
 
-Vitalis is a personal health AI agent. It runs continuously in the background, monitors your sleep and nutrition, notices patterns, and acts on them — without being asked.
+Vitalis is a personal health AI agent. It runs continuously in the background, monitors your sleep and nutrition, notices patterns, and acts on them, without being asked.
 
 It is built across two systems. The [Vitalis Android app](https://github.com/leekycauldron/vitalis) runs on your phone and streams from Ray-Ban Meta glasses, passively logging everything you eat or drink just by looking at it. This agent, the AI layer, reads that data, combines it with your Oura Ring metrics, and reasons across both to give you genuinely useful, personalised health guidance through Telegram.
 
