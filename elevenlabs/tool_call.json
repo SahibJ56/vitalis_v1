@@ -1,0 +1,108 @@
+{
+  "type": "webhook",
+  "name": "notify_bryson_appointment",
+  "description": "Send Bryson an appointment or reservation update through the OpenClaw Telegram Gateway channel after the call result is known.",
+  "disable_interruptions": false,
+  "force_pre_tool_speech": false,
+  "pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "execution_mode": "immediate",
+  "api_schema": {
+    "url": "https://bryson-yoga-pro-9-16imh9.tail9f2dac.ts.net/elevenlabs/appointment",
+    "method": "POST",
+    "path_params_schema": [],
+    "query_params_schema": [],
+    "request_body_schema": {
+      "id": "body",
+      "type": "object",
+      "description": "The appointment or reservation result to send to Bryson.",
+      "properties": [
+        {
+          "id": "status",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Booking result status: booked, not_available, needs_follow_up, or failed.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": true
+        },
+        {
+          "id": "when",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Confirmed appointment or reservation time.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "what",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "What was booked or requested.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": true
+        },
+        {
+          "id": "where",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Business, clinic, restaurant, or location name if known.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "confirmation",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Confirmation details, reservation name, callback instructions, or important follow-up details.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": false
+        },
+        {
+          "id": "summary",
+          "type": "string",
+          "value_type": "llm_prompt",
+          "description": "Short plain-English summary for Bryson of what happened on the call.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "enum": null,
+          "is_system_provided": false,
+          "required": true
+        }
+      ],
+      "required": false,
+      "value_type": "llm_prompt"
+    },
+    "request_headers": [
+      {
+        "type": "value",
+        "name": "X-Appointment-Webhook-Secret",
+        "value": ""
+      }
+    ],
+    "content_type": "application/json",
+    "auth_connection": null
+  },
+  "assignments": [],
+  "response_timeout_secs": 120,
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  },
+  "response_mocks": []
+}
